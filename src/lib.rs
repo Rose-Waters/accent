@@ -4,17 +4,21 @@ pub mod color;
 pub mod model;
 pub mod space;
 
+pub mod channels {
+    pub mod rgb;
+}
+
 pub mod family {
     pub mod rgb {
-        mod wg;
-        mod sc;
-        mod dp3;
-        mod srgb;
-        mod aces;
-        mod rec7;
-        mod rec20;
-        mod linear;
-        mod prophoto;
+        pub(crate)mod wg;
+        pub(crate)mod sc;
+        pub(crate)mod dp3;
+        pub(crate)mod srgb;
+        pub(crate)mod aces;
+        pub(crate)mod rec7;
+        pub(crate)mod rec20;
+        pub(crate)mod linear;
+        pub(crate)mod prophoto;
 
         pub use prophoto::PROPHOTO;
         pub use linear::LINEAR;
@@ -86,4 +90,9 @@ pub mod family {
         pub use hex::HEX;
         pub use xyz::XYZ;
     }
+}
+
+
+pub mod consts {
+    pub use crate::family::rgb::dp3::{ DP3_LRGB, LRGB_DP3 };
 }

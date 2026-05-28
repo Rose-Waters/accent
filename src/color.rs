@@ -35,3 +35,26 @@ where M: Model,
     /// Compile-time marker binding this layout instance to its mathematical coordinate space.
     _space: PhantomData<S>
 }
+
+impl<M, S, T> Color<M, S, T>
+where M: Model,
+      S: Space<ModelType = M>,
+{
+    /// Creates a new `Color` instance from raw channels and an alpha value.
+    ///
+    /// This constructor binds the provided component layout to the target color space `S`
+    /// at compile-time. No conversion or validation is performed on the input data.
+    ///
+    /// ### Arguments
+    /// * `channels` - The structural layout components matching the associated `Model` (e.g., `[u8; 3]` for `Rgb`).
+    /// * `alpha` - The scalar transparency component, where `0` is completely transparent and 
+    ///   the maximum value of `T` (e.g., `1.0` for `f32` or `255` for `u8`) is completely opaque.
+    ///
+    pub fn new(channels: M::Channels<T>, alpha: T) -> Self {
+        Self { 
+            channels, 
+            alpha, 
+            _space: PhantomData 
+        }
+    }
+}

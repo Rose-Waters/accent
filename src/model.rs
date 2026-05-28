@@ -1,5 +1,7 @@
 #![allow(unused)]
 // model.rs
+use crate::channels::rgb::RGBchannels;
+
 pub trait Model {
     type Channels<T>;
 }
@@ -18,24 +20,20 @@ pub struct EXTRAmodel;
 
 impl Model for RGBmodel {
     /// [`RGB`]
-    type Channels<T> = (T, T, T);
+    type Channels<T> = RGBchannels<T>;
 }
-
 impl Model for HSLmodel {
     /// [`HSL`]
     type Channels<T> = (T, T, T);
 }
-
 impl Model for LABmodel {
     /// [`LAB`]
     type Channels<T> = (T, T, T);
 }
-
 impl Model for CMYKmodel {
     /// [`CMYK`]
-    type Channels<T> = (T, T, T);
+    type Channels<T> = (T, T, T, T);
 }
-
 impl Model for EXTRAmodel {
     /// [`EXTRA`]
     type Channels<T> = (T, T, T);
