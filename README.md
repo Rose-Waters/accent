@@ -1,6 +1,6 @@
 # Accent 🎨
 
-`accent` is a abstraction API for color. 
+`accent` is a abstraction API for color by Rose Waters. 
 
 Instead of treating colors as dumb `[f32; 4]` buffers or generic hex values, `accent` introduces compile-time type safety for pixel pipelines. It allows graphics engineers, engine developers, and shader designers to represent, transform, and connect standard display, broadcast, and perceptual color models without runtime overhead.
 
